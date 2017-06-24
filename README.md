@@ -1,4 +1,4 @@
-# Robotic arm - Pick & Place project
+# Robotic arm - Pick & Place project s
 
 Make sure you are using robo-nd VM or have Ubuntu+ROS installed locally.
 
@@ -76,25 +76,24 @@ $ rosrun kuka_arm IK_server.py
 Once Gazebo and rviz are up and running, make sure you see following in the gazebo world:
 
 	- Robot
-	
+
 	- Shelf
-	
+
 	- Blue cylindrical target in one of the shelves
-	
+
 	- Dropbox right next to the robot
-	
+
 
 If any of these items are missing, report as an issue.
 
 Once all these items are confirmed, open rviz window, hit Next button.
 
-To view the complete demo keep hitting Next after previous action is completed successfully. 
+To view the complete demo keep hitting Next after previous action is completed successfully.
 
 Since debugging is enabled, you should be able to see diagnostic output on various terminals that have popped up.
 
-The demo ends when the robot arm reaches at the top of the drop location. 
+The demo ends when the robot arm reaches at the top of the drop location.
 
 There is no loopback implemented yet, so you need to close all the terminal windows in order to restart.
 
 In case the demo fails, close all three terminal windows and rerun the script.
-
