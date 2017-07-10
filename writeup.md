@@ -1,8 +1,5 @@
 ## Project: Kinematics Pick & Place
 
-**Steps to complete the project:**  
-
-
 [//]: # (Image References)
 
 [corr]: ./results/corr_1000.png
@@ -87,9 +84,12 @@ There two special cases here: 1) when `q5` = 0 and 2) when `q5` = pi. In both th
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results.
 
+I've implemented Forward and Inverse Kinematics logic in `fk-ik.pynb` file and later moved almost without changes code to the `IK_server.py`.
 
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
+One of the problem is that singularity cases are not handling the previous state and sometime arm is just rotating almost 360 degrees without any need for this. In order to fix it we could add the logic that checks previous theta angles and selects the closest pair for angles `q4` and `q6` for cases when `sin(q5) = 0` i.e. singular situation where infinite number of solution exists.
 
+Sometimes simulator stops grasping objects correctly, it's just not closing enough the gripper links and objects remain on the shelf. Not sure is it the simulation + speed of my machine issue or I should change something in IK code (but seems former is more probable).
 
-And just for fun, another example image:
-![alt text][image3]
+But the biggest issue is my MacBook Pro 13 inch and VM that runs on about 3-6 FPS which is making big trouble in testing everything together in ROS. I am just about to buy a new machine for this course. (that's my problem and I will solve it)
+
+Need more integration testing on a better machine ...
