@@ -19,6 +19,12 @@ from mpmath import *
 from sympy import symbols, cos, sin, asin, acos, pi, sqrt, atan2, Abs, simplify, pprint, solveset, S
 from sympy.matrices import Matrix, Transpose
 
+# Define symbols
+alpha0, alpha1, alpha2, alpha3, alpha4, alpha5, alpha6 = symbols('alpha0:7')
+a0, a1, a2, a3, a4, a5, a6 = symbols('a0:7')
+d1, d2, d3, d4, d5, d6, d7 = symbols('d1:8')
+q1, q2, q3, q4, q5, q6, q7 = symbols('q1:8')
+
 
 # DH Parameters
 s = {alpha0: 0,     a0: 0,      d1: 0.75,  q1: q1,           # 1
@@ -251,9 +257,9 @@ def inverse_kinematics(O, s):
     # Calc symbolicaly wrist rotation matrix
     R4_G_sym = rot_z(q4) * rot_x(pi/2) * rot_z(q5) * rot_x(-pi/2) * rot_z(q6)
 
-
+    '''
     # Show formula (for derivation)
-    print('R4_G_sym =')
+    prisnt('R4_G_sym =')
     pprint(simplify(R4_G_sym)) # just for visualization
 
 
@@ -264,7 +270,7 @@ def inverse_kinematics(O, s):
     # Corner case q5 = pi
     print('R4_G_sym (q5=pi) =')
     pprint(simplify(R4_G_sym.subs({q5: pi}))) # just for visualization
-
+    '''
 
 
     # Solve wrist rotation matrix
@@ -350,7 +356,7 @@ def handle_calculate_IK(req):
             # Return from URDF to DH param coordinates (apply inverse correction)
             O1 = O * Transpose(RG_corr)
 
-            theta_1, theta_2, theta_3, theta_4, theta_5, theta_6 = inverse_kinematics(O1)
+            theta1, theta2, theta3, theta4, theta5, theta6 = inverse_kinematics(O1, s)
 
             # Populate response for the IK request
             # In the next line replace theta1,theta2...,theta6 by your joint angle variables
